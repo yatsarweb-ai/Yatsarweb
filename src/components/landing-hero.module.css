@@ -277,10 +277,10 @@
 @media (max-width: 760px) {
   .scene {
     padding: 12px 12px 0;
-    min-height: 100svh;
+    min-height: 0;
   }
   .frame {
-    min-height: calc(100svh - 12px);
+    min-height: 0;
     border-radius: 24px 24px 0 0;
   }
   .header {
@@ -319,49 +319,49 @@
     min-height: 46px;
   }
   .copy {
-    width: 94%;
-    padding-top: 30px;
+    width: calc(100% - 12px);
+    padding-top: 24px;
   }
   .label {
-    font-size: 10px;
+    font-size: 10.5px;
     letter-spacing: 1.8px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
   .copy h1 {
-    font-size: clamp(30px, 9.4vw, 52px);
-    line-height: 1.16;
-    letter-spacing: -0.05em;
+    font-size: clamp(30px, 9.75vw, 58px);
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+    line-height: 1.12;
+    letter-spacing: -0.055em;
   }
   .description {
-    font-size: 15px;
-    line-height: 1.75;
-    max-width: 400px;
-    margin-top: 22px;
-    padding-inline: 4px;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 420px;
+    margin-top: 20px;
+    padding-inline: 0;
   }
   .actions {
     flex-direction: column;
-    gap: 12px;
-    margin-top: 28px;
+    gap: 14px;
+    margin-top: 24px;
     padding-inline: 0;
   }
   .whatsappButton,
   .projectsButton {
-    width: min(260px, 100%);
-    min-height: 56px;
+    width: min(280px, 100%);
+    min-height: 58px;
     padding: 16px 20px;
-    font-size: 13px;
+    font-size: 14px;
     gap: 12px;
   }
   .visualStage {
-    margin-top: 44px;
-    padding-block: 0 40px;
+    margin-top: 32px;
+    padding-block: 0 28px;
     flex: none;
   }
   .composition {
-    width: min(94%, 540px);
-    /* The largest full PNG needs 19/24 * .99 * 2025/1620 = .98 of the width. */
-    aspect-ratio: 1;
+    width: min(96%, 600px);
     grid-template-columns: repeat(24, minmax(0, 1fr));
     align-items: center;
   }
@@ -373,18 +373,16 @@
   .notebook {
     grid-column: 1/20;
     align-self: start;
-    width: 99%;
+    width: 100%;
   }
   .deviceCrop {
-    /* Keep the entire original canvas, including its transparent safety area. */
-    aspect-ratio: 4 / 5;
+    /* Frame only empty transparency, with 8 source pixels around every visible edge. */
+    aspect-ratio: var(--mobile-device-ratio);
   }
   .deviceImage {
-    position: static;
-    width: 100%;
-    max-width: 100%;
-    left: auto;
-    top: auto;
+    width: var(--mobile-image-width);
+    left: var(--mobile-image-left);
+    top: var(--mobile-image-top);
   }
 }
 @media (prefers-reduced-motion: reduce) {

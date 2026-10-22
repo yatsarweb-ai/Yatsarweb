@@ -26,12 +26,19 @@ function DeviceImage({ device }: { device: 'notebook' | 'phone' }) {
     device === 'notebook'
       ? { x: 95, y: 251, width: 1412, height: 1345 }
       : { x: 163, y: 162, width: 1309, height: 1638 };
+  const mobileBounds = {
+    x: bounds.x - 8,
+    y: bounds.y - 8,
+    width: bounds.width + 16,
+    height: bounds.height + 16,
+  };
   return (
     <div
       className={styles.deviceCrop}
       style={
         {
           '--device-ratio': `${bounds.width}/${bounds.height}`,
+          '--mobile-device-ratio': `${mobileBounds.width}/${mobileBounds.height}`,
         } as CSSProperties
       }
     >
@@ -52,6 +59,9 @@ function DeviceImage({ device }: { device: 'notebook' | 'phone' }) {
             '--image-width': `${(1620 / bounds.width) * 100}%`,
             '--image-left': `${(-bounds.x / bounds.width) * 100}%`,
             '--image-top': `${(-bounds.y / bounds.height) * 100}%`,
+            '--mobile-image-width': `${(1620 / mobileBounds.width) * 100}%`,
+            '--mobile-image-left': `${(-mobileBounds.x / mobileBounds.width) * 100}%`,
+            '--mobile-image-top': `${(-mobileBounds.y / mobileBounds.height) * 100}%`,
           } as CSSProperties
         }
       />
@@ -106,6 +116,44 @@ export default function LandingHero({ contactLink }: Props) {
           const phone = group.querySelector<HTMLElement>(
             '[data-device="phone"]',
           )!;
+          if (!desktop) {
+            // A short approach during ordinary scroll. No pin, extra document
+            // spacing or vertical transforms that fight the browser's toolbar.
+            const mobileTimeline = gsap.timeline({
+              defaults: { ease: 'none', duration: 1 },
+              scrollTrigger: {
+                id: 'yatsar-hero-mobile',
+                trigger: stage,
+                start: () =>
+                  Math.max(
+                    1,
+                    stage.getBoundingClientRect().top +
+                      window.scrollY -
+                      window.innerHeight * 0.55,
+                  ),
+                end: '+=160',
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            });
+            mobileTimeline
+              .fromTo(
+                notebook,
+                { x: 0, scale: 1 },
+                { x: () => group.offsetWidth * 0.02, scale: 1.02 },
+                0,
+              )
+              .fromTo(
+                phone,
+                { x: 0, scale: 1 },
+                { x: () => -group.offsetWidth * 0.04, scale: 1.04 },
+                0,
+              );
+            return () => {
+              mobileTimeline.scrollTrigger?.kill();
+              mobileTimeline.revert();
+            };
+          }
           const fitDevices = () => {
             const room = Math.max(
               desktop ? 180 : 170,
