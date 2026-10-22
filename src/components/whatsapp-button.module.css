@@ -1,0 +1,56 @@
+.button {
+  position: relative;
+  isolation: isolate;
+}
+.rim {
+  position: absolute;
+  inset: -1px;
+  overflow: hidden;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: #a9d6ff26;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+.rim > span {
+  position: absolute;
+  width: 300%;
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 245deg,
+    #72bcff36 280deg,
+    #a9d6ff 325deg,
+    #eef8ff 340deg,
+    transparent 360deg
+  );
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: perimeter 6s linear infinite;
+}
+.button > .icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+}
+@keyframes perimeter {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@media (max-width: 760px) {
+  .button > .icon {
+    width: 19px;
+    height: 19px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rim > span {
+    animation: none;
+  }
+}

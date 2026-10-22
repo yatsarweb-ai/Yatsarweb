@@ -1,0 +1,26 @@
+.logo {
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.image {
+  /* Center the visible mark within the original 1254px transparent canvas.
+     The full file stays intact: no clipping, filters or stretching. */
+  position: absolute;
+  left: -11.240310078%;
+  top: 50%;
+  width: 121.511627907%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  transform: translateY(-52.751196172%);
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 760px) {
+  .logo {
+    width: 132px;
+  }
+}

@@ -1,0 +1,154 @@
+.section {
+  padding: 64px 24px 80px;
+  background: #080b12;
+  color: #f8fafc;
+  font-family: var(--font-manrope), Arial, sans-serif;
+  text-align: center;
+}
+.inner {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.section em {
+  color: #3976ff;
+  font-family: var(--font-manrope), Arial, sans-serif;
+  font-size: inherit;
+  letter-spacing: inherit;
+  font-style: italic;
+  font-weight: inherit;
+  font-variation-settings: inherit;
+}
+.heading {
+  font-size: clamp(34px, 3.6vw, 54px);
+  font-weight: 800;
+  font-variation-settings: 'wght' 800;
+  line-height: 1.2;
+  letter-spacing: -2px;
+  text-wrap: balance;
+}
+.heading em {
+  display: inline-block;
+}
+.heading > span,
+.statement > span {
+  display: block;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 960px;
+  margin: 44px auto 0;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 114px;
+  padding: 24px 28px;
+  border: 1px solid #252b37;
+  border-radius: 20px;
+  background: #0e121b;
+}
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+}
+.emoji {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border: 1px solid #222936;
+  border-radius: 15px;
+  background: #0b0f17;
+  font-size: 32px;
+  line-height: 1;
+}
+.card p {
+  min-width: 0;
+  flex: 1;
+  color: #d5d9e2;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+  text-wrap: pretty;
+}
+.card em {
+  font-weight: 700;
+  font-variation-settings: 'wght' 700;
+  white-space: nowrap;
+}
+.closing {
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+.statement {
+  font-size: clamp(23px, 2.4vw, 34px);
+  font-weight: 750;
+  font-variation-settings: 'wght' 750;
+  line-height: 1.35;
+  letter-spacing: -0.8px;
+  text-wrap: balance;
+}
+.statement em {
+  display: inline-block;
+}
+.description {
+  max-width: 760px;
+  margin: 20px auto 0;
+  color: #9fa7b6;
+  font-size: 18px;
+  line-height: 1.8;
+  text-wrap: balance;
+}
+@media (max-width: 760px) {
+  .section {
+    padding: 64px 20px;
+  }
+  .heading {
+    font-size: clamp(30px, 7.7vw, 42px);
+    letter-spacing: -1px;
+  }
+  .cards {
+    margin-top: 32px;
+    gap: 14px;
+  }
+  .card {
+    min-height: 120px;
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .cardContent {
+    gap: 14px;
+  }
+  .emoji {
+    font-size: 26px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+  .card p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .closing {
+    margin-top: 34px;
+  }
+  .statement {
+    font-size: 23px;
+    letter-spacing: -0.6px;
+  }
+  .description {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+}
