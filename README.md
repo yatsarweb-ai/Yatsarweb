@@ -22,8 +22,8 @@ npm start
 
 ## Personalización
 
-- Copiar `.env.example` a `.env.local`: dominio final con HTTPS, número completo de WhatsApp con código de país, email y redes. Reiniciar el servidor o recompilar después de cambiar variables.
-- El CTA abre WhatsApp cuando está configurado; en su ausencia, email si está disponible. Sin ambos, muestra un diálogo de disponibilidad. Las redes vacías no se muestran.
+- Copiar `.env.example` a `.env.local`: dominio final con HTTPS, email y redes. Reiniciar el servidor o recompilar después de cambiar variables.
+- `whatsappContact` en `src/lib/content.ts` centraliza el número y el mensaje de WhatsApp. Todos los CTA usan un enlace directo `wa.me`, sin modal ni dependencia de variables de entorno. Las redes vacías no se muestran.
 - `src/lib/content.ts`: mantiene el array de proyectos y servicios. Cada proyecto admite `image`, `mobileImage` opcional e `imageAlt`. Para capturas desktop con otra proporción, ajustar dimensiones de `Image` en `ProjectFeature`. Usar archivos propios en `public/projects`.
 - Los filtros Todos / Demo / Conceptos conservan su función. Los proyectos con URL ocupan la vista principal; los placeholders se mantienen en un índice desplegable secundario y se muestran abiertos con el filtro Conceptos.
 - Natura Ludmi sigue siendo una **demo / maqueta**. Las capturas documentan la versión local, no un cliente publicado. No hay testimonios ni métricas inventadas.
@@ -40,7 +40,7 @@ La portada toma como referencias principales `public/Contenido Grafico/EJEMPLO P
 
 Una timeline con scrub desvanece el contenido y escala un único contenedor que agrupa los dispositivos. No hay traslación lateral ni deformación. El pin dura únicamente el crecimiento, con distancias adaptadas a la pantalla y escala limitada al espacio disponible. Al terminar, el pin se libera y proyectos entra por scroll natural mientras los dispositivos se desvanecen. Los tiempos se recalculan al redimensionar. Se respetan `prefers-reduced-motion`, limpieza de ScrollTrigger y contenido sin JavaScript.
 
-El hero tiene dos CTA: WhatsApp, con icono verde y brillo sutil, y Ver proyectos. WhatsApp reutiliza la configuración de contacto existente. Si no hay número, conserva el fallback de email o diálogo de disponibilidad.
+El hero tiene dos CTA: WhatsApp, con icono verde y brillo sutil, y Ver proyectos. El botón de WhatsApp comparte componente y destino con el cierre del sitio.
 
 Con `prefers-reduced-motion` no hay pin ni secuencia compleja; la portada se mantiene estática y el scroll es normal. El resto de las animaciones existentes (captura y líneas del proceso) se conserva. Sin JavaScript, la composición y los enlaces HTML siguen presentes.
 

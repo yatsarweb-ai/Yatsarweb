@@ -1,17 +1,14 @@
-import type { MouseEventHandler } from 'react';
 import { whatsappUrl } from '@/lib/content';
 import styles from './whatsapp-button.module.css';
 
 type Props = {
   className?: string;
   label?: string;
-  onUnavailable?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export default function WhatsAppButton({
   className = '',
   label = 'Hablemos por WhatsApp',
-  onUnavailable,
 }: Props) {
   const href = whatsappUrl();
   const content = (
@@ -33,7 +30,7 @@ export default function WhatsAppButton({
     </>
   );
   const classes = `${styles.button} ${className}`;
-  return href ? (
+  return (
     <a
       className={classes}
       href={href}
@@ -42,9 +39,5 @@ export default function WhatsAppButton({
     >
       {content}
     </a>
-  ) : (
-    <button className={classes} type="button" onClick={onUnavailable}>
-      {content}
-    </button>
   );
 }

@@ -1,14 +1,17 @@
+export const whatsappContact = {
+  number: '5493517655931',
+  message:
+    '¡Hola, Tobías! Estuve viendo tu web y tengo una idea para mi negocio. Me gustaría contártela y saber cómo podemos hacerla realidad.',
+} as const;
+
 export const site = {
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '',
+  whatsapp: whatsappContact.number,
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || '',
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '',
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || '',
 };
 export function whatsappUrl() {
-  const number = site.whatsapp.replace(/\D/g, '');
-  return number
-    ? `https://wa.me/${number}?text=${encodeURIComponent('¡Hola YATSAR! Quiero conversar sobre mi proyecto web.')}`
-    : null;
+  return `https://wa.me/${whatsappContact.number}?text=${encodeURIComponent(whatsappContact.message)}`;
 }
 export type Project = {
   id: string;
