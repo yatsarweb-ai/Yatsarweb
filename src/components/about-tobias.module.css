@@ -44,6 +44,10 @@
 .introduction p + p {
   margin-top: 12px;
 }
+.outlook {
+  color: #4778ff;
+  font-weight: 600;
+}
 .cards {
   grid-area: cards;
   display: grid;

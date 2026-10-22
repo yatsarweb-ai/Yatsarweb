@@ -93,14 +93,38 @@
 .cardLink::after {
   content: '';
   position: absolute;
-  inset: 42% 0 0;
+  inset: 65% 0 0;
+  z-index: 1;
   pointer-events: none;
+  /* Translucent fallback: keeps labels readable without backdrop support. */
   background: linear-gradient(
-    180deg,
-    transparent 5%,
-    #00000008 38%,
-    #00000085 100%
+    to bottom,
+    transparent,
+    rgb(9 12 16 / 12%) 28%,
+    rgb(9 12 16 / 64%)
   );
+}
+@supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)) {
+  .cardLink::after {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(0 0 0 / 8%) 20%,
+      rgb(0 0 0 / 35%) 50%,
+      rgb(0 0 0 / 75%) 78%,
+      #000
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(0 0 0 / 8%) 20%,
+      rgb(0 0 0 / 35%) 50%,
+      rgb(0 0 0 / 75%) 78%,
+      #000
+    );
+  }
 }
 .reflection {
   position: absolute;

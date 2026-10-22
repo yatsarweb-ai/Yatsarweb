@@ -43,18 +43,19 @@ export default function AboutTobias() {
     >
       <div className={styles.inner}>
         <h2 className={styles.heading} id="tobias-title" data-scroll-reveal>
-          Hola, soy <em>Tobías</em>
+          Hola, soy <em>Tobías</em>.
         </h2>
         <div className={styles.introduction}>
           <p data-scroll-reveal="left" data-reveal-delay="0.06">
-            Estoy detrás de <strong className={styles.brand}>YATSAR</strong>, un
-            proyecto que nació de algo que me acompaña desde hace mucho: mi
-            interés por crear webs.
+            La curiosidad me trajo hasta acá. Las ganas de crear hicieron el resto.
           </p>
           <p data-scroll-reveal="left" data-reveal-delay="0.12">
-            Desde chico me daba curiosidad este mundo. Con el tiempo fui
-            aprendiendo de a poco, explorando herramientas, probando ideas y
-            entendiendo cómo llevar una web desde una idea hasta algo real.
+            Así nació <strong className={styles.brand}>YATSAR</strong>, mi espacio
+            para transformar ideas en sitios web que no solo se vean bien, sino
+            que tengan algo que contar.
+          </p>
+          <p data-scroll-reveal="left" data-reveal-delay="0.18">
+            <strong className={styles.outlook}>Y esto recién empieza.</strong>
           </p>
         </div>
         <figure
