@@ -145,3 +145,17 @@
     gap: 12px;
   }
 }
+@media (max-width: 760px) {
+  .section {
+    padding-top: 32px;
+  }
+  .heading {
+    text-align: center;
+  }
+  .introduction {
+    width: 100%;
+    max-width: 42ch;
+    justify-self: center;
+    text-align: center;
+  }
+}
